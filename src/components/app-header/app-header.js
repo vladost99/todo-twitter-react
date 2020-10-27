@@ -7,11 +7,11 @@ display: flex;
 align-items: flex-end;
 justify-content: space-between;  
 `
-const AppHeader = ({liked, allPosts}) => {
+const AppHeader = ({amount,like}) => {
     return ( 
         <Header>
             <h1>Vlad</h1>
-    <h2>{allPosts} записей, из них понравилось {liked}</h2>
+    <h2>{amount} записей, из них понравилось {like}</h2>
         </Header>
     )
 }

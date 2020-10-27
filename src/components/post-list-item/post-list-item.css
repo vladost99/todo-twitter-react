@@ -52,3 +52,19 @@
 .app-list-item.important .btn-star {
     color: #aeaeae;
 }
+
+.animate {
+  position: relative;
+  animation: animate .5s linear 
+}
+
+
+@keyframes animate {
+  0% {
+    right: -100%;
+  }
+
+  100% {
+    right: 0;
+  }
+}

@@ -1,40 +1,36 @@
 import React, {Component} from 'react';
 import './post-add-form.css';
+import FirebaseApi from '../../Services/firebaseApi';
 
  export default class PostAddForm extends Component {
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             text: ''
         }
-        this.onValueChange = this.onValueChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onValueChange(e){
-      this.setState({
-          text: e.target.value
-      });
+    updateText = (e) => {
+        this.setState({text: e.target.value});
     }
-
-onSubmit(e) {
-    e.preventDefault();
-    this.props.onAdd(this.state.text);
-    this.setState( {
-        text: ''
-    })
-}
+    onSubmites = (e) => {
+        
+        e.preventDefault();
+        this.props.addTodo(this.state.text);
+        this.setState({text: ''});
+    }
+    
     render() {
         return (
-            <form 
+            <form onSubmit={this.onSubmites}
             className="bottom-panel d-flex"
-            onSubmit={this.onSubmit}
+          
             >
                 <input
                     type="text"
                     placeholder="О чем вы думаете сейчас"
                     className="form-control new post-label"
-                    onChange={this.onValueChange}
+                    onChange={this.updateText}
                     value={this.state.text}
                />
                 <button 
