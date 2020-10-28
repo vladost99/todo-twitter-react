@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import './post-list-item.css';
+import FirebaseApi from '../../Services/firebaseApi';
 
 
 export default class PostListItem extends Component {
        constructor(props) {
            super(props);
-
-           this.state = {
-            importantS: this.props.important,
-            likeS: this.props.like
+          /* this.state = {
+                importantS: this.props.important,
+                likeS: this.props.like
             }
+            */
        }
 
-        toggleImportant = async () => {
-          await  this.setState({importantS: !this.state.importantS});
-          await  this.props.update(this.props.label, this.props.id, this.state.importantS, this.state.likeS);
+      
+    
+
+
+
+
+
+        toggleImportant = () => {
+           this.props.update(this.props.id, !this.props.important, this.props.like);
         }
 
-        toggleLike = async () => {
-            await  this.setState({likeS: !this.state.likeS});
-            await  this.props.update(this.props.label, this.props.id, this.state.importantS, this.state.likeS);
-          }
+        toggleLike =  () => {
+            this.props.update(this.props.id, this.props.important, !this.props.like);
+        }
         
        
 
@@ -29,14 +35,14 @@ export default class PostListItem extends Component {
 
 
     render() {
-        const {label, id, removeTodo} = this.props;
+        const {label, id, removeTodo, important, like} = this.props;
         let classNames = 'app-list-item d-flex justify-content-between';
 
-        if(this.state.importantS){
+        if(important){
             classNames+=' important';
         }
 
-        if(this.state.likeS){
+        if(like){
             classNames+=' like';
         }
         return (

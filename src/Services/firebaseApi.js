@@ -40,9 +40,8 @@ import firebase from 'firebase';
         this.database.ref(`todo/${id}`).remove();
     }
 
-    updateData = (label,id,important, like) => {
+    updateData = (id,important, like) => {
         const postData = {
-            label: label,
             important: important,
             id: id,
             like: like

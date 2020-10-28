@@ -71,8 +71,8 @@ export default class App extends Component {
         this.firebase.removeTodo(id);
     }
 
-    update = (label,id,important, like) => {
-       this.firebase.updateData(label,id,important, like);
+    update = (id,important, like) => {
+       this.firebase.updateData(id,important, like);
     }
     
 
